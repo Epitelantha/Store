@@ -20,10 +20,45 @@ namespace GameStore
             showcase.Add(new Game("Space Killaz!", 99.99f, "Game of the Year", "The greatest game of all time, 10/10 IGN"));
         }
 
+        public bool IsValidGame(int n)
+        {
+            if (n < showcase.Count && n >= 0)
+                return true;
+            else
+                return false;
+        }
+
+        public void PrintShowcase()
+        {
+            foreach (Game g in showcase)
+            {
+                Console.WriteLine("\t" + "[" + showcase.IndexOf(g) + "] " + g.name + ", " + g.price + " Euro");
+            }
+        }
+
+        public void PrintShowcaseDetailed()
+        {
+            foreach (Game g in showcase)
+            {
+                Console.WriteLine("\t" + "[" + showcase.IndexOf(g) + "] " + g.name + ", " + g.price + " Euro, " + g.genre + ", " + g.description);
+            }
+        }
+
         public void AddGame(Game game)
         {
-            if(showcase.Count < maxGames)
-                showcase.Add(game);
+            /*if(showcase.Count < maxGames)
+                showcase.Add(game);*/
+            showcase.Add(game);
+        }
+
+        public void NewGame(Game game)
+        {
+            showcase.Add(game);
+        }
+
+        public void Sell(int game, User user)
+        {
+            Sell(showcase[game], user);
         }
 
         public void Sell(Game game, User user)
@@ -90,5 +125,4 @@ namespace GameStore
             this.hasGame = hasGame;
         }
     }
-
 }
